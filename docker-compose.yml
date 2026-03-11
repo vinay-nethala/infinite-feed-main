@@ -1,0 +1,15 @@
+services:
+
+  api:
+    build: ./api
+    ports:
+      - "8080:8080"
+
+  frontend:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - VITE_API_URL=http://api:8080
+    depends_on:
+      - api
